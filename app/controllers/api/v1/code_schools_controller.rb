@@ -38,7 +38,7 @@ module Api
         if school.destroy
           render json: { status: :ok }
         else 
-          render json: { :errors: school.errors.full_messages }
+          render json: { errors: school.errors.full_messages }
         end        
       end
       
