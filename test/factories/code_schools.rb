@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :code_school do
-    name "CoderSchool"
+    name Faker::Company.name
     url "http://www.coderschool.vn"
     logo "https://d388w23p6r1vqc.cloudfront.net/img/startups/11852/logo-1457327647.png"
     full_time false

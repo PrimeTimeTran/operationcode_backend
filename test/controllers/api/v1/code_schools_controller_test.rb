@@ -21,6 +21,11 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
     assert_equal JSON.parse(response.body)[0]["name"], "CoderSchool"
   end
   
+  test ":create endpoint creates a CodeSchool successfully" do    
+    post api_v1_code_schools_path(@school), params: {code_school: @school}, as: :json
+    assert_response :ok
+  end
+  
   test ":show will not work for a invalid record" do
     school_count = CodeSchool.count + 1
     get api_v1_code_school_path(school_count), as: :json
@@ -40,8 +45,8 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
   
   test ":destroy endpoint destroys an existing CodeSchool" do
     id = @school.id
-    delete api_v1_code_school_url(@school)
     
+    delete api_v1_code_school_url(@school)    
     assert_equal response.status, 200
     
     get api_v1_code_school_path(id), as: :json
